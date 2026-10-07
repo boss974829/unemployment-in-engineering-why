@@ -243,16 +243,8 @@ export function ReportApp() {
     });
   }
 
-  async function install() {
-    const prompt = installRef.current;
-    if (!prompt) {
-      setInstallOpen(true);
-      return;
-    }
-    await prompt.prompt();
-    await prompt.userChoice;
-    installRef.current = null;
-    setCanInstall(false);
+  function install() {
+    setInstallOpen(true);
   }
 
   async function sharePortfolio() {
@@ -449,12 +441,13 @@ export function ReportApp() {
               Put it on the phone
             </h2>
             <p className="mt-3 text-sm text-pretty text-muted">
-              The button saves why-engineering.apk. Open that file. If the phone asks, allow Install unknown apps for the browser, then install. The app is named Why Engineering.
+              Open this in Chrome. A file saved from WhatsApp or another app will not install. Tap the button. If Chrome warns you, choose Download anyway, then tap Open on why-engineering-1.3.apk. If the phone blocks it, allow Install unknown apps for Chrome and open the file again. The app is named Why Engineering.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               <a
-                href="https://boss974829.github.io/unemployment-in-engineering-why/why-engineering.apk"
-                download="why-engineering.apk"
+                href="https://boss974829.github.io/unemployment-in-engineering-why/why-engineering-1.3.apk"
+                target="_blank"
+                rel="noopener"
                 className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-fg"
               >
                 Download the APK

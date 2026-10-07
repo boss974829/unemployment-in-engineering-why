@@ -14,9 +14,9 @@ The report is a folder on the existing GitHub Pages site. The page at [boss97482
 
 ## Android
 
-[Download the APK](https://boss974829.github.io/unemployment-in-engineering-why/why-engineering.apk)
+[Install page](https://boss974829.github.io/unemployment-in-engineering-why/install.html) · [Download the APK](https://boss974829.github.io/unemployment-in-engineering-why/why-engineering-1.3.apk)
 
-The package opens the website above. On the phone: allow install from this source, then open **Why Engineering**. It needs a network connection.
+Open the install page in Chrome on an Android phone. If Chrome warns you, choose Download anyway, then tap Open. The file name is why-engineering-1.3.apk. Allow Install unknown apps for Chrome if the phone asks. The app is named Why Engineering and needs a network connection. An iPhone cannot install this file. Delete any older download that does not end in .apk. That file will not open.
 
 ## README
 
