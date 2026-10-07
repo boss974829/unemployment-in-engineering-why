@@ -14,7 +14,7 @@ The report is a folder on the existing GitHub Pages site. The page at [boss97482
 
 ## Android
 
-[Download the APK](https://github.com/boss974829/unemployment-in-engineering-why/releases/latest)
+[Download the APK](https://github.com/boss974829/unemployment-in-engineering-why/releases/download/v1/why-engineering.apk)
 
 The package opens the website above. On the phone: allow install from this source, then open **Why Engineering**. It needs a network connection.
 
