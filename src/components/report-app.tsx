@@ -449,11 +449,11 @@ export function ReportApp() {
               Put it on the phone
             </h2>
             <p className="mt-3 text-sm text-pretty text-muted">
-              The button saves why-engineering.apk. Allow install from that source, then open Why Engineering. Chrome can also install this page: menu, then Install app or Add to Home screen. On iPhone: Share, then Add to Home Screen.
+              The button saves why-engineering.apk. Open that file. If the phone asks, allow Install unknown apps for the browser, then install. The app is named Why Engineering.
             </p>
             <div className="mt-6 flex flex-wrap gap-2">
               <a
-                href="https://github.com/boss974829/unemployment-in-engineering-why/releases/download/v1/why-engineering.apk"
+                href="https://boss974829.github.io/unemployment-in-engineering-why/why-engineering.apk"
                 download="why-engineering.apk"
                 className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-fg"
               >
