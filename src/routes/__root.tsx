@@ -16,19 +16,13 @@ export const Route = createRootRoute({
         content:
           "A branch-by-branch report on why engineering students in India miss the job: syllabus versus 2026 hiring, college tier, and a live read of open postings.",
       },
-      { name: "theme-color", content: "#0c0d0e" },
+      { name: "theme-color", content: "#f5f5f7" },
     ],
     links: [
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       { rel: "stylesheet", href: appCss },
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,460;0,6..72,560;1,6..72,460&family=Outfit:wght@400;500;600&display=swap",
-      },
     ],
   }),
   component: () => (

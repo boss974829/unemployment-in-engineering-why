@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0c0d0e;
-  --color-elevated: #141516;
-  --color-subtle: #1c1e20;
-  --color-fg: #ececee;
-  --color-muted: #a1a1aa;
-  --color-faint: #71717a;
-  --color-line: #2c2e33;
-  --color-accent: #d5d8e0;
-  --color-accent-fg: #121316;
-  --color-danger: #c45c4a;
-  --color-ok: #7d9a86;
-  --font-sans: "Outfit", system-ui, sans-serif;
-  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --color-bg: #f5f5f7;
+  --color-elevated: #ffffff;
+  --color-subtle: #e8e8ed;
+  --color-fg: #1d1d1f;
+  --color-muted: #6e6e73;
+  --color-faint: #86868b;
+  --color-line: #d2d2d7;
+  --color-accent: #0071e3;
+  --color-accent-fg: #ffffff;
+  --color-danger: #d70015;
+  --color-ok: #008009;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
 }
 
 @layer base {
@@ -35,6 +35,8 @@
     background: var(--color-bg);
     color: var(--color-fg);
     font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.47;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -44,13 +46,23 @@
     cursor: pointer;
   }
 
+  button:disabled {
+    opacity: 0.4;
+  }
+
+  .font-display {
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.07;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
   }
 
   ::selection {
-    background: #2a3140;
+    background: #b4d5ff;
     color: var(--color-fg);
   }
 }
@@ -69,8 +81,13 @@
     scrollbar-width: thin;
     scrollbar-color: var(--color-line) transparent;
   }
+
   .chapter-slide {
-    transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 420ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .sheet {
+    box-shadow: 0 24px 60px rgb(0 0 0 / 0.16);
   }
 }
 

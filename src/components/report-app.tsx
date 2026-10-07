@@ -277,10 +277,10 @@ export function ReportApp() {
 
   return (
     <div className="flex h-dvh w-full min-w-0 max-w-full flex-col overflow-hidden bg-bg text-fg">
-      <header className="w-full min-w-0 shrink-0 border-b border-line">
-        <div className="flex h-14 min-w-0 items-center gap-3 px-3 md:px-5">
-          <p className="font-display text-xl leading-none">Why</p>
-          <p className="hidden min-w-0 truncate text-sm text-muted sm:block">
+      <header className="w-full min-w-0 shrink-0 border-b border-line bg-elevated/80 backdrop-blur-xl">
+        <div className="flex h-14 min-w-0 items-center gap-3 px-4 md:px-6">
+          <p className="text-sm font-semibold tracking-tight">Why</p>
+          <p className="hidden min-w-0 truncate text-xs text-muted sm:block">
             Unemployment in engineering · {branch.short} · {TIERS[tier].short}
           </p>
           <div className="ml-auto flex items-center gap-2">
@@ -291,7 +291,7 @@ export function ReportApp() {
               id="tier"
               value={tier}
               onChange={(event) => setTier(event.target.value as TierId)}
-              className="h-11 rounded-lg border border-line bg-elevated px-3 text-sm md:hidden"
+              className="h-11 rounded-full border border-line bg-elevated px-3 text-sm md:hidden"
             >
               {(Object.keys(TIERS) as TierId[]).map((id) => (
                 <option key={id} value={id}>
@@ -299,15 +299,15 @@ export function ReportApp() {
                 </option>
               ))}
             </select>
-            <div className="hidden rounded-xl border border-line p-1 md:flex">
+            <div className="hidden items-center rounded-full bg-subtle p-1 md:flex">
               {(Object.keys(TIERS) as TierId[]).map((id) => (
                 <button
                   key={id}
                   type="button"
                   onClick={() => setTier(id)}
                   className={cn(
-                    "h-9 rounded-lg px-3 text-sm",
-                    tier === id ? "bg-fg text-accent-fg" : "text-muted",
+                    "h-9 rounded-full px-3 text-xs font-medium",
+                    tier === id ? "bg-elevated text-fg shadow-sm" : "text-muted",
                   )}
                 >
                   {TIERS[id].short}
@@ -317,7 +317,7 @@ export function ReportApp() {
             <button
               type="button"
               onClick={() => setLayout((mode) => (mode === "horizon" ? "stack" : "horizon"))}
-              className="inline-flex h-11 items-center gap-2 rounded-lg border border-line px-3 text-sm"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-subtle px-4 text-xs font-medium"
             >
               {layout === "horizon" ? <Rows3 size={16} /> : <PanelLeft size={16} />}
               <span className="hidden sm:inline">{layout === "horizon" ? "Read down" : "Read across"}</span>
@@ -325,22 +325,22 @@ export function ReportApp() {
             <button
               type="button"
               onClick={() => void install()}
-              className="inline-flex h-11 items-center rounded-lg bg-accent px-3 text-sm font-medium text-accent-fg"
+              className="inline-flex h-11 items-center rounded-full bg-accent px-4 text-xs font-medium text-accent-fg"
             >
               {canInstall ? "Install" : "App"}
             </button>
           </div>
         </div>
-        <div className="flex min-w-0 gap-1 overflow-x-auto px-3 pb-2 md:px-5">
+        <div className="flex min-w-0 gap-1 overflow-x-auto px-2 md:justify-center md:px-6">
           {CHAPTERS.map((chapter, index) => (
             <button
               key={chapter.id}
               type="button"
-              aria-current={active === index ? "true" : undefined}
+              aria-current={active === index ? "page" : undefined}
               onClick={() => go(index)}
               className={cn(
-                "h-11 shrink-0 rounded-lg px-3 text-sm",
-                active === index ? "bg-fg text-accent-fg" : "text-muted",
+                "h-11 shrink-0 border-b-2 px-3 text-xs font-medium",
+                active === index ? "border-accent text-accent" : "border-transparent text-muted",
               )}
             >
               {chapter.label}
@@ -417,14 +417,14 @@ export function ReportApp() {
         </Pane>
       </div>
 
-      <div className="flex h-12 shrink-0 items-center justify-between border-t border-line px-3 text-sm text-muted md:px-5">
-        <span className="flex items-center gap-3 tabular-nums">
+      <div className="flex h-14 shrink-0 items-center justify-between border-t border-line bg-elevated/80 px-4 text-xs text-muted backdrop-blur-xl md:px-6">
+        <span className="flex items-center gap-4 tabular-nums">
           <span>
             {String(active + 1).padStart(2, "0")} / {String(CHAPTERS.length).padStart(2, "0")}
           </span>
           <a
             href="https://github.com/boss974829/unemployment-in-engineering-why#readme"
-            className="text-fg underline decoration-line underline-offset-4"
+            className="font-medium text-accent"
           >
             README
           </a>
@@ -433,38 +433,38 @@ export function ReportApp() {
           {layout === "horizon" ? "Sideways, one chapter at a time" : "Down the same chapters"} · {DATA_AS_OF}
         </span>
         <span className="flex gap-2">
-          <button type="button" className="inline-flex h-11 w-11 items-center justify-center" onClick={() => go(Math.max(0, active - 1))} aria-label="Previous chapter">
-            <ArrowLeft size={18} />
+          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-subtle text-fg" onClick={() => go(Math.max(0, active - 1))} aria-label="Previous chapter">
+            <ArrowLeft size={16} />
           </button>
-          <button type="button" className="inline-flex h-11 w-11 items-center justify-center" onClick={() => go(Math.min(CHAPTERS.length - 1, active + 1))} aria-label="Next chapter">
-            <ArrowRight size={18} />
+          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-subtle text-fg" onClick={() => go(Math.min(CHAPTERS.length - 1, active + 1))} aria-label="Next chapter">
+            <ArrowRight size={16} />
           </button>
         </span>
       </div>
 
       {installOpen ? (
-        <div className="fixed inset-0 z-20 flex items-end justify-center bg-bg/80 p-3 md:items-center" role="dialog" aria-modal="true" aria-labelledby="install-title">
-          <div className="w-full max-w-lg rounded-xl border border-line bg-elevated p-5">
+        <div className="fixed inset-0 z-20 flex items-end justify-center bg-fg/40 p-4 backdrop-blur-sm md:items-center" role="dialog" aria-modal="true" aria-labelledby="install-title">
+          <div className="sheet w-full max-w-lg rounded-xl bg-elevated p-6">
             <h2 id="install-title" className="font-display text-3xl text-balance">
               Put it on the phone
             </h2>
             <p className="mt-3 text-sm text-pretty text-muted">
               The phone build is a signed APK on the project README. Install that if you want an icon that opens the site. Chrome can also install this page: menu, then Install app or Add to Home screen. On iPhone: Share, then Add to Home Screen.
             </p>
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap gap-2">
               <a
                 href="https://github.com/boss974829/unemployment-in-engineering-why/releases/latest"
-                className="inline-flex h-11 items-center rounded-lg bg-accent px-4 text-sm font-medium text-accent-fg"
+                className="inline-flex h-11 items-center rounded-full bg-accent px-5 text-sm font-medium text-accent-fg"
               >
                 Download the APK
               </a>
               <a
                 href="https://github.com/boss974829/unemployment-in-engineering-why#readme"
-                className="inline-flex h-11 items-center rounded-lg border border-line px-4 text-sm"
+                className="inline-flex h-11 items-center rounded-full px-5 text-sm font-medium text-accent"
               >
                 README
               </a>
-              <button type="button" className="h-11 rounded-lg border border-line px-4 text-sm" onClick={() => setInstallOpen(false)}>
+              <button type="button" className="h-11 rounded-full bg-subtle px-5 text-sm font-medium" onClick={() => setInstallOpen(false)}>
                 Close
               </button>
             </div>
@@ -512,32 +512,30 @@ function Opening({ go }: { go: (index: number) => void }) {
     ["72%", "Of undergraduate curricula", "Employers called them misaligned with the work. India Skills Report 2026."],
   ];
   return (
-    <div className="grid min-h-full md:h-full md:grid-cols-2">
-      <div className="flex flex-col justify-between gap-8 p-5 md:p-8">
-        <p className="text-sm text-faint">Report · {DATA_AS_OF}</p>
-        <div>
-          <h1 className="max-w-xl font-display text-5xl leading-none text-balance md:text-6xl">
-            Unemployment in engineering, <span className="italic">why?</span>
-          </h1>
-          <p className="mt-5 max-w-xl text-pretty text-muted">
-            The degree kept its timetable. The job changed. This is the distance between what Indian colleges still examine and what companies hired for this year — by branch, by tier, without the story a senior told you in a corridor.
-          </p>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          <button type="button" onClick={() => go(2)} className="h-11 rounded-lg bg-accent px-4 text-sm font-medium text-accent-fg">
+    <div className="flex min-h-full flex-col">
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-6 py-16 text-center md:py-24">
+        <p className="text-xs font-semibold text-accent">Report · {DATA_AS_OF}</p>
+        <h1 className="mt-4 max-w-3xl font-display text-5xl text-balance md:text-7xl">
+          Unemployment in engineering. Why?
+        </h1>
+        <p className="mt-5 max-w-xl text-lg text-pretty text-muted md:text-xl">
+          The degree kept its timetable. The job changed. This is the distance between what Indian colleges still examine and what companies hired for this year — by branch, by tier, without the story a senior told you in a corridor.
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <button type="button" onClick={() => go(2)} className="h-11 rounded-full bg-accent px-5 text-sm font-medium text-accent-fg">
             Start with your branch
           </button>
-          <button type="button" onClick={() => go(1)} className="h-11 rounded-lg border border-line px-4 text-sm">
+          <button type="button" onClick={() => go(1)} className="h-11 rounded-full px-5 text-sm font-medium text-accent">
             The country first
           </button>
         </div>
       </div>
-      <div className="grid border-t border-line sm:grid-cols-2 md:border-t-0 md:border-l">
+      <div className="grid gap-3 p-4 sm:grid-cols-2 md:grid-cols-4 md:p-6">
         {figures.map(([value, label, note]) => (
-          <article key={label} className="flex flex-col justify-between gap-4 border-line p-5 sm:odd:border-r sm:[&:nth-child(-n+2)]:border-b">
-            <p className="font-display text-5xl tabular-nums leading-none">{value}</p>
+          <article key={label} className="flex flex-col justify-between gap-8 rounded-xl bg-elevated p-5">
+            <p className="font-display text-4xl tabular-nums md:text-5xl">{value}</p>
             <div>
-              <h2 className="text-sm font-medium">{label}</h2>
+              <h2 className="text-sm font-semibold">{label}</h2>
               <p className="mt-2 text-sm text-pretty text-faint">{note}</p>
             </div>
           </article>
@@ -564,7 +562,7 @@ function Country() {
       <div className="grid gap-4 md:grid-cols-2">
         <article className="rounded-xl border border-line bg-elevated p-5">
           <h3 className="font-display text-2xl">What moved in 2026</h3>
-          <ul className="mt-4 space-y-3 text-sm text-pretty text-muted">
+          <ul className="mt-4 list-none space-y-3 pl-0 text-sm text-pretty text-muted">
             <li>AI and ML hiring on Naukri, September: +20%. Hiring of people with 0–3 years: +1%.</li>
             <li>IT services openings at an 18-month high, and still mostly mid-senior. Entry tech roles were 15,000.</li>
             <li>64% of employers called AI, data, or security skills premium no matter the college. 31% still leaned on an IIT or IIM tag.</li>
@@ -636,11 +634,11 @@ function BranchPane({
               onClick={() => onPick(item.id)}
               className={cn(
                 "flex h-14 w-full items-center justify-between gap-3 border-b border-line px-4 text-left text-sm",
-                selected ? "bg-fg text-accent-fg" : "text-fg",
+                selected ? "bg-subtle font-medium" : "text-fg",
               )}
             >
               <span className="truncate">{item.name}</span>
-              <span className={cn("shrink-0 tabular-nums", selected ? "text-accent-fg" : "text-faint")}>{item.short}</span>
+              <span className="shrink-0 tabular-nums text-faint">{item.short}</span>
             </button>
           );
         })}
@@ -682,7 +680,7 @@ function BranchPane({
 
 function Mini({ label, value, note }: { label: string; value: string; note: string }) {
   return (
-    <article className="bg-bg p-4">
+    <article className="bg-elevated p-4">
       <h3 className="text-sm text-faint">{label}</h3>
       <p className="mt-2 font-display text-2xl text-balance">{value}</p>
       <p className="mt-2 text-sm text-pretty text-faint">{note}</p>
@@ -802,7 +800,7 @@ function Colleges({ tier }: { tier: TierId }) {
       </header>
       <div className="grid gap-3 md:grid-cols-3">
         {(Object.keys(TIERS) as TierId[]).map((id) => (
-          <article key={id} className={cn("rounded-xl border p-4", id === tier ? "border-fg" : "border-line")}>
+          <article key={id} className={cn("rounded-xl bg-elevated p-4", id === tier ? "ring-2 ring-accent" : "")}>
             <h3 className="text-sm font-medium">{TIERS[id].label}</h3>
             <p className="mt-2 text-sm text-pretty text-muted">{TIERS[id].blurb}</p>
           </article>
@@ -823,15 +821,15 @@ function Colleges({ tier }: { tier: TierId }) {
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder="Search a college or city"
-          className="h-11 flex-1 rounded-lg border border-line bg-subtle px-3 text-sm"
+          className="h-11 flex-1 rounded-full border border-line bg-elevated px-4 text-sm"
         />
-        <div className="flex rounded-xl border border-line p-1">
+        <div className="flex rounded-full bg-subtle p-1">
           {(["all", "t1", "t2", "t3"] as const).map((id) => (
             <button
               key={id}
               type="button"
               onClick={() => setFilter(id)}
-              className={cn("h-9 rounded-lg px-3 text-sm", filter === id ? "bg-fg text-accent-fg" : "text-muted")}
+              className={cn("h-9 rounded-full px-3 text-sm font-medium", filter === id ? "bg-elevated text-fg shadow-sm" : "text-muted")}
             >
               {id === "all" ? "All" : TIERS[id].short}
             </button>
@@ -1039,11 +1037,11 @@ function PortfolioPane({
           <Field label="One thing you can defend" value={portfolio.proof} onChange={(proof) => setPortfolio({ ...portfolio, proof })} />
           <Field label="Link" value={portfolio.link} onChange={(link) => setPortfolio({ ...portfolio, link })} />
           <div className="flex flex-wrap gap-2">
-            <button type="submit" className="h-11 rounded-lg bg-accent px-4 text-sm font-medium text-accent-fg" disabled={!portfolio.name && !sharedView?.name}>
+            <button type="submit" className="h-11 rounded-full bg-accent px-5 text-sm font-medium text-accent-fg" disabled={!portfolio.name && !sharedView?.name}>
               {copied ? "Link copied" : "Share this page"}
             </button>
             {sharedView ? (
-              <button type="button" className="h-11 rounded-lg border border-line px-4 text-sm" onClick={onClearShared}>
+              <button type="button" className="h-11 rounded-full px-5 text-sm font-medium text-accent" onClick={onClearShared}>
                 Back to my draft
               </button>
             ) : null}
@@ -1077,7 +1075,7 @@ function Field({ label, value, onChange }: { label: string; value: string; onCha
         id={id}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-11 rounded-lg border border-line bg-subtle px-3"
+        className="h-11 rounded-xl border border-line bg-elevated px-3"
       />
     </label>
   );
@@ -1087,7 +1085,7 @@ function Mark({ children, tone = "neutral" }: { children: ReactNode; tone?: "neu
   return (
     <span
       className={cn(
-        "inline-flex h-7 items-center rounded-sm border border-line px-2 text-xs font-medium",
+        "inline-flex h-7 items-center rounded-full bg-subtle px-3 text-xs font-medium",
         tone === "danger" && "text-danger",
         tone === "ok" && "text-ok",
         tone === "neutral" && "text-muted",
@@ -1101,8 +1099,8 @@ function Mark({ children, tone = "neutral" }: { children: ReactNode; tone?: "neu
 function Meter({ value }: { value: number }) {
   const width = Math.max(0, Math.min(100, Math.round(value)));
   return (
-    <div className="h-1.5 overflow-hidden rounded-full bg-subtle">
-      <div className="h-full bg-fg" style={{ width: `${width}%` }} />
+    <div className="h-1 overflow-hidden rounded-full bg-subtle">
+      <div className="h-full rounded-full bg-accent" style={{ width: `${width}%` }} />
     </div>
   );
 }

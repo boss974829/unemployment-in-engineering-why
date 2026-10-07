@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="Unemployment in Engineering">
-  <rect width="16" height="16" fill="#0C0D0E"/>
-  <rect x="2" y="2" width="3" height="9" fill="#ECECEE"/>
-  <rect x="11" y="2" width="3" height="9" fill="#ECECEE"/>
-  <rect x="2" y="11" width="12" height="3" fill="#ECECEE"/>
-  <rect x="6" y="6" width="4" height="3" fill="#C45C4A"/>
+  <rect width="16" height="16" rx="4" fill="#F5F5F7"/>
+  <rect x="3" y="3" width="10" height="10" rx="2.5" fill="#1D1D1F"/>
+  <rect x="6.2" y="6.2" width="3.6" height="3.6" rx="1" fill="#0071E3"/>
 </svg>
