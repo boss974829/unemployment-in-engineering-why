@@ -1,0 +1,17 @@
+{
+  "name": "Unemployment in Engineering, Why?",
+  "short_name": "Why",
+  "id": "/unemployment-in-engineering-why/",
+  "start_url": "/unemployment-in-engineering-why/",
+  "scope": "/unemployment-in-engineering-why/",
+  "display": "standalone",
+  "background_color": "#0c0d0e",
+  "theme_color": "#0c0d0e",
+  "icons": [
+    {
+      "src": "/unemployment-in-engineering-why/__grok/icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

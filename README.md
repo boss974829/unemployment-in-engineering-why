@@ -10,6 +10,8 @@ Chapters move sideways. **Read down** stacks them. Pick a branch and a college t
 
 The copy hosted here is static. The Live chapter can read open postings only when the app is running with its server. On this Pages site that feed stays down and the rest of the report does not change.
 
+The report is a folder on the existing GitHub Pages site. The page at [boss974829.github.io](https://boss974829.github.io/) is unchanged.
+
 ## Android
 
 [Download the APK](https://github.com/boss974829/unemployment-in-engineering-why/releases/latest)

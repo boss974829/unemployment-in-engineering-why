@@ -145,7 +145,10 @@ function authPopupPlugin(): Plugin {
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
+// Default `/` keeps the in-chat preview and Grok publish at the site root.
+// A Pages build sets GITHUB_PAGES_BASE so assets and the router mount under the project path.
 export default defineConfig(({ command, isPreview }) => ({
+  base: process.env.GITHUB_PAGES_BASE || "/",
   server: {
     host: "0.0.0.0",
     port: 8080,
